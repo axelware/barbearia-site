@@ -1,153 +1,107 @@
-:root {
-  --primaria: #202124;
-  --secundaria: #f4f4f4;
-  --destaque: #00c896;
-  --texto: #333;
-  --fonte: 'Segoe UI', sans-serif;
-}
-
+/* styles.css */
 body {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  font-family: var(--fonte);
-  background-color: var(--secundaria);
-  color: var(--texto);
+  background: #f9f9f9;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
-  background: var(--primaria);
-  color: white;
-  padding: 40px 20px;
+  background: #222;
+  color: #f4f4f4;
   text-align: center;
-  animation: fadeIn 1s ease-in-out;
+  padding: 2rem 1rem;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.services, .cart {
+  background: #fff;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.service-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-main {
-  padding: 30px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-h2 {
-  border-left: 4px solid var(--destaque);
-  padding-left: 10px;
-  margin-bottom: 20px;
-  color: var(--primaria);
-}
-
-.lista-servicos {
-  display: flex;
-  gap: 20px;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.servico {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  width: 250px;
-  transition: transform 0.2s ease;
+.service {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  width: 150px;
+  text-align: center;
+  margin: 0.5rem;
+  transition: box-shadow 0.3s ease;
 }
 
-.servico:hover {
-  transform: translateY(-5px);
+.service:hover {
+  box-shadow: 0 0 10px #777;
 }
 
-.servico button {
-  margin-top: 10px;
-  background-color: var(--destaque);
-  color: white;
+button.add-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
   border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
+  background: #222;
+  color: #fff;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.carrinho {
-  margin-top: 40px;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+button.add-btn:hover {
+  background: #444;
 }
 
-#lista-carrinho {
+#cart-items {
   list-style: none;
   padding: 0;
-  margin-bottom: 10px;
+  margin: 0 0 1rem 0;
 }
 
-#btnConfirmar {
-  background-color: #333;
+#cart-items li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+#total {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+#confirm-btn {
+  padding: 0.75rem 1.5rem;
+  background: #007bff;
   color: white;
-  padding: 12px 18px;
-  border-radius: 8px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  display: none;
-  gap: 8px;
-  align-items: center;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+#confirm-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+#confirm-btn:not(:disabled):hover {
+  background: #0056b3;
 }
 
 footer {
-  background-color: var(--primaria);
-  color: white;
+  margin-top: auto;
+  background: #222;
+  color: #f4f4f4;
   text-align: center;
-  padding: 20px;
+  padding: 1rem;
   font-size: 0.9rem;
-  margin-top: 40px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.formulario input,
-.formulario textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.formulario input[type="tel"] {
-  appearance: textfield;
-}
-
-.formulario textarea {
-  resize: vertical;
-  min-height: 60px;
-}
-
-.formulario label {
-  font-weight: 500;
-  margin-top: 10px;
-}
-
-.formulario select {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
 }

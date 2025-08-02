@@ -1,53 +1,55 @@
-let carrinho = [];
+// script.js
+const addButtons = document.querySelectorAll('.add-btn');
+const cartItems = document.getElementById('cart-items');
+const totalDisplay = document.getElementById('total');
+const confirmBtn = document.getElementById('confirm-btn');
 
-function adicionar(servico, preco) {
-  carrinho.push({ servico, preco });
-  atualizarCarrinho();
-}
+let cart = [];
 
-function atualizarCarrinho() {
-  const lista = document.getElementById('lista-carrinho');
-  const total = document.getElementById('total');
-  const btn = document.getElementById('btnConfirmar');
-  lista.innerHTML = '';
+function updateCart() {
+  cartItems.innerHTML = '';
+  let total = 0;
 
-  if (carrinho.length === 0) {
-    total.textContent = 'Nenhum serviço selecionado.';
-    btn.style.display = 'none';
-    return;
-  }
-
-  let totalValor = 0;
-  carrinho.forEach(item => {
+  cart.forEach((item, index) => {
     const li = document.createElement('li');
-    li.textContent = `${item.servico} - R$ ${item.preco.toFixed(2)}`;
-    lista.appendChild(li);
-    totalValor += item.preco;
+    li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+    // Botão para remover do carrinho
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'x';
+    removeBtn.style.marginLeft = '10px';
+    removeBtn.style.cursor = 'pointer';
+    removeBtn.onclick = () => {
+      cart.splice(index, 1);
+      updateCart();
+    };
+    li.appendChild(removeBtn);
+    cartItems.appendChild(li);
+    total += item.price;
   });
 
-  total.textContent = `Total: R$ ${totalValor.toFixed(2)}`;
-  btn.style.display = 'flex';
+  totalDisplay.textContent = `Total: R$ ${total.toFixed(2)}`;
+  confirmBtn.disabled = cart.length === 0;
 }
 
-function confirmar() {
-  const nome = document.getElementById('nome').value.trim();
-  const telefoneCliente = document.getElementById('telefoneCliente').value.trim();
-  const dia = document.getElementById('dia').value;
-  const horario = document.getElementById('horario').value;
+addButtons.forEach(btn => {
+  btn.addEventListener('click', e => {
+    const serviceDiv = e.target.closest('.service');
+    const name = serviceDiv.getAttribute('data-name');
+    const price = parseFloat(serviceDiv.getAttribute('data-price'));
+    cart.push({ name, price });
+    updateCart();
+  });
+});
 
-  if (!nome || !telefoneCliente || !dia || !horario) {
-    alert("Por favor, preencha todos os campos.");
-    return;
-  }
-
-  const itens = carrinho.map(item => `${item.servico} (R$ ${item.preco})`).join(', ');
-  const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
-
-  const msg = `Olá, meu nome é *${nome}* (${telefoneCliente}) e gostaria de agendar:\n\n📋 *Serviços:* ${itens}\n💵 *Total:* R$ ${total.toFixed(2)}\n🕒 *Horário desejado:* ${dia} às ${horario}`;
-
-  const telefoneBarbeiro = "5513981558503"; // SEM + ou espaços
-  const url = `https://wa.me/${telefoneBarbeiro}?text=${encodeURIComponent(msg)}`;
-
-  // Redireciona diretamente (sem usar window.open)
-  window.location.href = url;
-}
+confirmBtn.addEventListener('click', () => {
+  if (cart.length === 0) return;
+  const message = cart
+    .map(item => `${item.name} - R$ ${item.price.toFixed(2)}`)
+    .join('\n');
+  const total = cart.reduce((acc, cur) => acc + cur.price, 0);
+  const whatsappMessage = encodeURIComponent(
+    `Olá, gostaria de agendar os seguintes serviços:\n${message}\nTotal: R$ ${total.toFixed(2)}`
+  );
+  const whatsappNumber = '559999999999'; // substitua pelo número real
+  window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+});
