@@ -1,0 +1,153 @@
+:root {
+  --primaria: #202124;
+  --secundaria: #f4f4f4;
+  --destaque: #00c896;
+  --texto: #333;
+  --fonte: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  background-color: var(--secundaria);
+  color: var(--texto);
+}
+
+header {
+  background: var(--primaria);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+main {
+  padding: 30px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  border-left: 4px solid var(--destaque);
+  padding-left: 10px;
+  margin-bottom: 20px;
+  color: var(--primaria);
+}
+
+.lista-servicos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.servico {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  width: 250px;
+  transition: transform 0.2s ease;
+}
+
+.servico:hover {
+  transform: translateY(-5px);
+}
+
+.servico button {
+  margin-top: 10px;
+  background-color: var(--destaque);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.carrinho {
+  margin-top: 40px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+#lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+#btnConfirmar {
+  background-color: #333;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: none;
+  gap: 8px;
+  align-items: center;
+}
+
+footer {
+  background-color: var(--primaria);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.formulario input[type="tel"] {
+  appearance: textfield;
+}
+
+.formulario textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.formulario label {
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.formulario select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}

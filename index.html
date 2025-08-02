@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Barbearia Corte Perfeito</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header>
+    <h1><i data-lucide="scissors"></i> Corte Perfeito</h1>
+    <p>Estilo. Tradição. Personalidade.</p>
+  </header>
+
+  <main>
+    <section class="servicos">
+      <h2>Serviços Disponíveis</h2>
+      <div class="lista-servicos">
+        <div class="servico">
+          <h3>Corte Masculino</h3>
+          <p>R$ 30,00</p>
+          <button onclick="adicionar('Corte Masculino', 30)">
+            <i data-lucide="plus-circle"></i> Adicionar
+          </button>
+        </div>
+        <div class="servico">
+          <h3>Barba</h3>
+          <p>R$ 20,00</p>
+          <button onclick="adicionar('Barba', 20)">
+            <i data-lucide="plus-circle"></i> Adicionar
+          </button>
+        </div>
+        <div class="servico">
+          <h3>Sobrancelha</h3>
+          <p>R$ 15,00</p>
+          <button onclick="adicionar('Sobrancelha', 15)">
+            <i data-lucide="plus-circle"></i> Adicionar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="carrinho" id="carrinho">
+  <h2>Seu Carrinho</h2>
+  <ul id="lista-carrinho"></ul>
+  <p id="total"></p>
+
+  <div class="formulario">
+  <input type="text" id="nome" placeholder="Seu nome completo" required />
+  <input type="tel" id="telefoneCliente" placeholder="Seu número (com DDD)" required />
+
+  <label for="dia">Selecione o dia:</label>
+  <select id="dia" required>
+    <option value="" disabled selected>Escolha o dia</option>
+    <option>Segunda-feira</option>
+    <option>Terça-feira</option>
+    <option>Quarta-feira</option>
+    <option>Quinta-feira</option>
+    <option>Sexta-feira</option>
+    <option>Sábado</option>
+  </select>
+
+  <label for="horario">Selecione o horário:</label>
+  <select id="horario" required>
+    <option value="" disabled selected>Escolha o horário</option>
+    <option>09:00</option>
+    <option>10:00</option>
+    <option>11:00</option>
+    <option>13:00</option>
+    <option>14:00</option>
+    <option>15:00</option>
+    <option>16:00</option>
+    <option>17:00</option>
+  </select>
+</div>
+
+  <button id="btnConfirmar" onclick="confirmar()">
+    <i data-lucide="check-circle"></i> Confirmar Agendamento
+  </button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Barbearia Corte Perfeito. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
