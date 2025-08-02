@@ -50,6 +50,6 @@ confirmBtn.addEventListener('click', () => {
   const whatsappMessage = encodeURIComponent(
     `Olá, gostaria de agendar os seguintes serviços:\n${message}\nTotal: R$ ${total.toFixed(2)}`
   );
-  const whatsappNumber = '559999999999'; // substitua pelo número real
+  const whatsappNumber = '5513981558503'; // substitua pelo número real
   window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
 });
